@@ -1,0 +1,12 @@
+<% if comment.child_comments.length > 0 %>
+  <% children = comment.child_comments %>
+  <% children.each do |child| %>  
+    <ul>
+      <li> 
+        <a href=" <%= comment_url(child) %> "> <%= child.content %> </a> 
+        <%= render 'shared/comment', comment: child %>
+      </li>
+    </ul>
+  <% end %>
+
+<% end %>

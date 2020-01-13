@@ -1,0 +1,31 @@
+<h1> <%= @comment.content %>  show page! </h1>
+
+<h4>Reply to this comment:</h4> 
+<form action="/comments" method="POST">
+
+  <input 
+    type="hidden" 
+    name="authenticity_token" 
+    value="<%=form_authenticity_token%>">
+
+    
+  <label for="body_input">Body</label>
+  <br>
+
+  <input 
+    type="hidden" 
+    name="comments[parent_comment_id]" 
+    value="<%= @comment.id %>">
+
+  <input 
+    type="hidden" 
+    name="comments[post_id]" 
+    value="<%= @comment.post_id %>">
+
+  <textarea 
+    name="comments[content]" 
+    id="body_input" cols="20" rows="2"></textarea>
+
+  <br>
+  <input type="submit" value="Submit">
+</form>

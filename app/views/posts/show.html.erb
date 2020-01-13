@@ -1,0 +1,32 @@
+<h1> <%= @post.title%> by <%= @author.username %>  </h1>
+
+<h4>Content:</h4>
+<p> <%= @post.content %>   </p>
+
+
+<h4>Subs</h4>
+
+<ul>
+  <% @subs.each do |sub| %>
+    <li> <a href="<%= sub_url(sub) %>"><%= sub.title%></a></li>
+
+  <% end %>
+</ul>
+
+<h2>Comments</h2>
+
+<a href="<%= new_post_comment_url(@post) %> ">Comment on this Post!</a>
+
+<ul>
+  <% @comments.each do |comment| %>
+  <li> <a href=" <%= comment_url(comment) %>"><%= comment.content%></a>   
+    <%= render 'shared/comment', comment: comment %>
+    
+  </li>
+
+  <% end %>
+</ul>
+
+<br>
+
+<a href=" <%= edit_post_url(@post) %> ">Edit</a>
