@@ -18,12 +18,10 @@
 <a href="<%= new_post_comment_url(@post) %> ">Comment on this Post!</a>
 
 <ul>
-  <% @comments.each do |comment| %>
-  <li> <a href=" <%= comment_url(comment) %>"><%= comment.content%></a>   
-    <%= render 'shared/comment', comment: comment %>
-    
-  </li>
-
+  <% @all_comments.where(parent_comment_id: nil).each do |comment| %>
+      <li>    
+          <%= render 'shared/comment', comment: comment, all_comments: @all_comments %>
+      </li>
   <% end %>
 </ul>
 

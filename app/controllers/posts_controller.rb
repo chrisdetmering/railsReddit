@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @author = User.find_by(id: @post.author_id)
     @subs = Sub.find(@post.sub_ids)
-    @comments = @post.comments.where(parent_comment_id: nil)
+    @all_comments = @post.comments
   end 
 
   def update 
